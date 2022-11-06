@@ -1,5 +1,5 @@
 #include<stdio.h>
-int demo3() {
+int main() {
 	int n ;
 	scanf_s("%d", &n);
 	int i = 1;

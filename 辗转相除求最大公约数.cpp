@@ -1,17 +1,17 @@
 #include<iostream>
 #include<iomanip>
 using namespace std;
-//ÉùÃ÷º¯Êı
+//å£°æ˜å‡½æ•°
 int recursion(int a,int b);
 int loop(int a ,int b);
 
-//Ö÷º¯Êı
+//ä¸»å‡½æ•°
 int main() {
 	int m, n;
 	int dividend,divisor;
-	//»ñÈ¡ÊäÈëÖµ
+	//è·å–è¾“å…¥å€¼
 	scanf_s("%d %d", &m, &n);
-	//±È½ÏÊäÈëÖµ£¬¶¨Òå³ıÊıÓë±»³ıÊı
+	//æ¯”è¾ƒè¾“å…¥å€¼ï¼Œå®šä¹‰é™¤æ•°ä¸è¢«é™¤æ•°
 	if (m > n) {
 		dividend = m;
 		divisor = n;
@@ -20,17 +20,17 @@ int main() {
 		dividend = m;
 		divisor = n;
 	}
-	//µ÷ÓÃº¯Êı
-	//½«³ıÊı¡¢±»³ıÊı´«Èëº¯Êı²¢½ÓÊÕ·µ»ØÖµ
+	//è°ƒç”¨å‡½æ•°
+	//å°†é™¤æ•°ã€è¢«é™¤æ•°ä¼ å…¥å‡½æ•°å¹¶æ¥æ”¶è¿”å›å€¼
 	int ret = loop(dividend, divisor);
-	printf("Ñ­»··½·¨µÃ³öµÄ×î´ó¹«Ô¼ÊıÊÇ£º%d\n", ret);
+	printf("å¾ªç¯æ–¹æ³•å¾—å‡ºçš„æœ€å¤§å…¬çº¦æ•°æ˜¯ï¼š%d\n", ret);
 
 	int rt = recursion(dividend, divisor);
-	printf("µİ¹é·½·¨µÃ³öµÄ×î´ó¹«Ô¼ÊıÊÇ£º%d\n", rt);
+	printf("é€’å½’æ–¹æ³•å¾—å‡ºçš„æœ€å¤§å…¬çº¦æ•°æ˜¯ï¼š%d\n", rt);
 	return 0;
 }
 
-//µİ¹é·½·¨
+//é€’å½’æ–¹æ³•
 int recursion(int dividend, int divisor) {
 	int remainder = dividend % divisor;
 	if (remainder != 0) {
@@ -41,7 +41,7 @@ int recursion(int dividend, int divisor) {
 	}
 }
 
-//Ñ­»··½·¨
+//å¾ªç¯æ–¹æ³•
 int loop(int dividend, int divisor) {
 	int remainder = 1;
 	for (;;) {

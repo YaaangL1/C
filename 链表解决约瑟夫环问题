@@ -1,0 +1,72 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+    struct Boy{
+        int code;
+        Boy* pNext;
+    };
+    Boy* pFirst = nullptr;
+    Boy* pCurrent = nullptr;
+    Boy* pivot = nullptr;
+int main(){
+    setbuf(stdout,nullptr);
+    int numOfBoys , m;
+    cout<< "请输入小孩数量,";
+    cout<<"每一次出局小孩的编号："<<endl;
+    cin>>numOfBoys>>m;
+    //增加第一个小孩
+    pFirst = new Boy;
+    pFirst->code = 1;
+    pFirst->pNext = nullptr;
+    pCurrent = pFirst;
+
+    //增加小孩
+    for (int i = 1; i < numOfBoys; ++i) {
+        pivot = pCurrent;
+        pCurrent = new Boy;
+        pCurrent->code = i+1;
+        pivot->pNext = pCurrent;
+    }
+    pCurrent->pNext = pFirst;
+
+    //输出所有小孩
+    /*cout<<setw(3)<<pFirst->code;
+    pCurrent = pFirst->pNext;
+    while (pCurrent!=pFirst){
+        cout<<setw(3)<<pCurrent->code;
+        pCurrent = pCurrent->pNext;
+    }*/
+    cout<<setw(3)<<pFirst->code;
+    for (int i = 1; i < numOfBoys; ++i) {
+        cout<<setw(3)<<pFirst->pNext->code;
+        pFirst = pFirst->pNext;
+    }
+    pFirst = pFirst->pNext;
+    cout<<endl;
+
+    //约瑟夫环问题
+    //设定第一个小孩
+    pCurrent = pFirst;//将当前小孩设置为第一位
+    while (pCurrent!=pCurrent->pNext){
+        int j = m;
+        //用j代替m进行递减运算，m存储数值
+        //第m位小孩则从1开始数m-1次
+        do {
+            pivot = pCurrent;
+            pCurrent = pCurrent->pNext;
+            j--;
+        } while (j>1);
+        cout<<setw(3)<<"第"<<pCurrent->code<<"位小孩离开"<<endl;
+        //在离开的小孩外重新围成一个圈圈
+        pivot->pNext = pCurrent->pNext;
+        //删除小孩
+        delete pCurrent;
+        //重新赋值pCurrent
+        pCurrent = pivot->pNext;
+    }
+    //输出胜利小孩
+    cout<<"最后的赢家是："<<pCurrent->code<<endl;
+    delete pCurrent;
+    delete pFirst;
+    return 0;
+}

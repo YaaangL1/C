@@ -67,6 +67,5 @@ int main(){
     //输出胜利小孩
     cout<<"最后的赢家是："<<pCurrent->code<<endl;
     delete pCurrent;
-    delete pFirst;
     return 0;
 }

@@ -1,0 +1,29 @@
+#include <cstdio>
+
+int main() {
+    setbuf(stdout, nullptr);
+    int i , j, num;
+    char c ;
+    scanf("%c",&c);
+    char ch = 'A';
+    num = c - ch +1;
+    //逐行打印
+    for ( i = 1; i <= num; ++i) {
+        //左侧空白倒三角
+        for ( j = 0; j < num - i; ++j) {
+            printf(" ");
+        }
+        //左侧正三角
+        //重置ch打印
+        for(ch = 'A';j < num ; j++){
+            printf("%c",ch++);
+        }
+        //右侧正三角
+        //上述代码执行完成之后ch-2所得到的值正好是需要打印的值
+        for(j = 1, ch-=2;j<i;j++,ch--){
+            printf("%c",ch);
+        }
+        printf("\n");
+    }
+    return 0;
+}
